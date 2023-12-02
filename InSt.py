@@ -177,8 +177,8 @@ def main(prompt = '', content_dir = '', style_dir='',ddim_steps = 50,strength = 
     return output
 
 # model.cpu()
-model.embedding_manager.load("./embeddings/modern_embeddings.pt")
-model = model.to(device)
+# model.embedding_manager.load("./embeddings/modern_embeddings.pt")
+# model = model.to(device)
 
 def generate_images(model, embeddings, content_img, style_img):
     model.embedding_manager.load(embeddings)

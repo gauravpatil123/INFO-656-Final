@@ -1,7 +1,8 @@
 import streamlit as st
 from PIL import Image
 import os
-# from InSt import generate_images as gen
+from InSt import model
+from InSt import generate_images as gen
 
 MODERN_EMBEDDING_PATH = "./embeddings/modern_embeddings.pt"
 ANDRE_EMBEDDING_PATH = "./embeddings/andre-derain_embeddings.pt"
@@ -10,6 +11,8 @@ style_andre = "./assets/style_images/andre-derain.jpg"
 CONTENT_IMG_DIR = "./assets/content_images/"
 current_content_img_path = None
 CONTENT_IMG_BOOL = False
+output = None
+GENERATED_IMG_DIR = "./assets/generated_images/"
 
 def load_img_from_path(path):
     img = Image.open(path)
@@ -55,16 +58,26 @@ def save_uploaded_image(dir, uploaded_image):
         CONTENT_IMG_BOOL = True
     return st.success(f"File Uploaded to ./assets/content_images/")
 
-def convert_image():
+def convert_image(model, embeddings, content_img_path, style_image_path):
     global CONTENT_IMG_BOOL, current_content_img_path
     if CONTENT_IMG_BOOL and current_content_img_path:
-        st.write(f"content image path: {current_content_img_path}")
+        out = gen(model, embeddings, content_img_path, style_image_path)
+        pass
     else:
         st.write(f"No content Image Uploaded, try to upload a content image.")
+        out = None
+    return out
 
-def run_convert(convert):
+def run_convert(convert, model, embeddings, content_img_path, style_image_path):
+    global output
     if convert:
-        convert_image()
+        out = convert_image(model, embeddings, content_img_path, style_image_path)
+        output = out
+
+def save_image(dir, img, style, content_name):
+    name = style + content_name + ".jpg"
+    with open(os.path.join(dir, name), "wb") as f:
+        f.write(img.getbuffer())
 
 if __name__=="__main__":
     intro_str = """
@@ -99,6 +112,7 @@ if __name__=="__main__":
     style_image_p = style_image_path(style_choice)
 
     content_img = st.file_uploader(label='#### Upload a content Image', type=['png', 'jpg'])
+    content_image_p = current_content_img_path
 
     if content_img:
         save_uploaded_image(CONTENT_IMG_DIR, content_img)
@@ -106,7 +120,14 @@ if __name__=="__main__":
 
     convert = st.button("Generate Image")
 
-    run_convert(convert)
+    run_convert(convert, model, embedding_path, content_image_p, style_image_p)
+
+    if output is not None:
+        st.image(output, width=500)
+    
+        
+    # save_image(GENERATED_IMG_DIR, output, style_selected, )
+
 
 
 
