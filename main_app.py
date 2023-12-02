@@ -11,7 +11,7 @@ st.write(intro_str)
 
 content_img = st.sidebar.file_uploader(label='Upload a content Image', type=['png', 'jpg'])
 
-style_img = st.sidebar.file_uploader(label='Upload a style Image', type=['png', 'jpg'])
+# style_img = st.sidebar.file_uploader(label='Upload a style Image', type=['png', 'jpg'])
 
 def load_img_from_path(path):
     img = Image.open(path)
