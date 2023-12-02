@@ -46,19 +46,14 @@ with col2:
     st.write("### Andre Derain")
     #andre = st.checkbox("Andre Derain")
 
-# if modern:
-#     st.write("Modern Style Selected")
-
-# if andre:
-#     st.write("Andre Derian Style Selected")
-
 style_choice = st.radio(
                 "#### Choose a Style Image",
                 ["Modern", "Andre Derain"],)
 
 def style_prompt(style):
-    out = st.write(f"###### {style} style selected")
-    return style
+    out = f"###### {style} style selected"
+    st.write(out)
+    return out
 
 style_selected = style_prompt(style_choice)
 
