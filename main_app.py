@@ -29,10 +29,12 @@ col1, col2 = st.columns(2)
 
 with col1:
     dsi1 = st.image(si1, width=300)
+    st.write("### Modern")
     modern = st.checkbox("Modern")
 
 with col2:
     dsi2 = st.image(si2, width=460)
+    st.write("### Andre Derain")
     andre = st.checkbox("Andre Derain")
 
 if modern:
@@ -41,14 +43,18 @@ if modern:
 if andre:
     st.write("Andre Derian Style Selected")
 
-def style_embedding_path():
-    path = ""
-    if modern:
-        path = ""
-    if andre:
-        path = ""
-    return path
+style_choice = st.radio(
+                "#### Choose a Style Image",
+                ["Modern", "Andre Derain"],)
 
+def style_embedding_path(style_choice):
+    path = ""
+    if style_choice == "Modern":
+        path = ""
+    elif style_choice == "Andre Derain":
+        path = ""
+    else:
+        path = ""
 
 if content_img:
     img = Image.open(content_img)
