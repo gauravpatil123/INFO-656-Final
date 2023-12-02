@@ -13,6 +13,7 @@ current_content_img_path = None
 CONTENT_IMG_BOOL = False
 output = None
 GENERATED_IMG_DIR = "./assets/generated_images/"
+save = None
 
 def load_img_from_path(path):
     img = Image.open(path)
@@ -124,9 +125,11 @@ if __name__=="__main__":
 
     if output is not None:
         st.image(output, width=500)
-    
-        
-    # save_image(GENERATED_IMG_DIR, output, style_selected, )
+        save = st.button("Save Generated Image")
+
+    if save:
+        gen_name = st.text_input('Name the generated image')
+        save_image(GENERATED_IMG_DIR, output, style_selected, gen_name)
 
 
 
