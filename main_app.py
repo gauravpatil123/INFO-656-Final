@@ -123,6 +123,7 @@ if __name__=="__main__":
 
     if output is not None:
         st.image(output, width=500)
+        download = st.download_button("Download Image", output)
 
 
 
