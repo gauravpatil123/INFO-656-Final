@@ -8,7 +8,8 @@ ANDRE_EMBEDDING_PATH = "./embeddings/andre-derain_embeddings.pt"
 style_modern = "./assets/style_images/modern.jpg"
 style_andre = "./assets/style_images/andre-derain.jpg"
 CONTENT_IMG_DIR = "./assets/content_images/"
-current_content_img_path = ""
+current_content_img_path = None
+CONTENT_IMG_BOOL = False
 
 def load_img_from_path(path):
     img = Image.open(path)
@@ -40,7 +41,7 @@ def style_image_path(style_choice):
     return path
 
 def save_uploaded_image(dir, uploaded_image):
-    global current_content_img_path
+    global current_content_img_path, CONTENT_IMG_BOOL
     img = Image.open(uploaded_image)
     st.image(img, width=500)
     file_name = uploaded_image.name
@@ -51,7 +52,19 @@ def save_uploaded_image(dir, uploaded_image):
         current_content_img_path = os.path.join(dir, uploaded_image.name)
         # st.write(current_content_img_path)
         f.write(uploaded_image.getbuffer())
+        CONTENT_IMG_BOOL = True
     return st.success(f"File Uploaded to ./assets/content_images/")
+
+def convert_image():
+    global CONTENT_IMG_BOOL, current_content_img_path
+    if CONTENT_IMG_BOOL and current_content_img_path:
+        st.write(f"content image path: {current_content_img_path}")
+    else:
+        st.write(f"No content Image Uploaded, try to upload a content image.")
+
+def run_convert(convert):
+    if convert:
+        convert_image()
 
 if __name__=="__main__":
     intro_str = """
@@ -90,6 +103,10 @@ if __name__=="__main__":
     if content_img:
         save_uploaded_image(CONTENT_IMG_DIR, content_img)
         content_image_p = current_content_img_path
+
+    convert = st.button("Generate Image")
+
+    run_convert(convert)
 
 
 
