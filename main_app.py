@@ -76,9 +76,13 @@ def run_convert(convert, model, embeddings, content_img_path, style_image_path):
         output = out
 
 def save_image(dir, img, style, content_name):
-    name = style + content_name + ".jpg"
-    with open(os.path.join(dir, name), "wb") as f:
-        f.write(img.getbuffer())
+    name = f"{style}_{content_name}.jpg"
+    img.save(os.path.join(dir, name))
+
+def run_save(save, output, style_selected, gen_name):
+    global GENERATED_IMG_DIR
+    if save:
+        save_image(GENERATED_IMG_DIR, output, style_selected, gen_name)
 
 if __name__=="__main__":
     intro_str = """
@@ -118,7 +122,8 @@ if __name__=="__main__":
     if content_img:
         save_uploaded_image(CONTENT_IMG_DIR, content_img)
         content_image_p = current_content_img_path
-
+        
+    gen_name = st.text_input('Please name the generated image')
     convert = st.button("Generate Image")
 
     run_convert(convert, model, embedding_path, content_image_p, style_image_p)
@@ -126,10 +131,7 @@ if __name__=="__main__":
     if output is not None:
         st.image(output, width=500)
         save = st.button("Save Generated Image")
-
-    if save:
-        gen_name = st.text_input('Name the generated image')
-        save_image(GENERATED_IMG_DIR, output, style_selected, gen_name)
+        run_save(save, output, style_selected, gen_name)
 
 
 
