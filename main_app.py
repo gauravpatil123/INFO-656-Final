@@ -77,15 +77,6 @@ def run_convert(convert, model, embeddings, content_img_path, style_image_path, 
         out.save(os.path.join(GENERATED_IMG_DIR, name))
         output = out
 
-def save_image(dir, img, style, content_name):
-    name = f"{style}_{content_name}.jpg"
-    img.save(os.path.join(dir, name))
-
-def run_save(save, output, style_selected, gen_name):
-    global GENERATED_IMG_DIR
-    if save:
-        save_image(GENERATED_IMG_DIR, output, style_selected, gen_name)
-
 if __name__=="__main__":
     intro_str = """
     # My InST Feedback App 
@@ -132,8 +123,6 @@ if __name__=="__main__":
 
     if output is not None:
         st.image(output, width=500)
-        # save = st.button("Save Generated Image")
-        # run_save(save, output, style_selected, gen_name)
 
 
 
