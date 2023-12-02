@@ -1,5 +1,14 @@
+"""
+Imports
+"""
 import streamlit as st
 from PIL import Image
+
+"""
+Variables
+"""
+MODERN_EMBEDDING_PATH = "./embeddings/modern_embeddings.pt"
+ANDRE_EMBEDDING_PATH = "./embeddings/andre-derain_embeddings.pt"
 
 intro_str = """
 # My first app 
@@ -30,31 +39,40 @@ col1, col2 = st.columns(2)
 with col1:
     dsi1 = st.image(si1, width=300)
     st.write("### Modern")
-    modern = st.checkbox("Modern")
+    #modern = st.checkbox("Modern")
 
 with col2:
     dsi2 = st.image(si2, width=460)
     st.write("### Andre Derain")
-    andre = st.checkbox("Andre Derain")
+    #andre = st.checkbox("Andre Derain")
 
-if modern:
-    st.write("Modern Style Selected")
+# if modern:
+#     st.write("Modern Style Selected")
 
-if andre:
-    st.write("Andre Derian Style Selected")
+# if andre:
+#     st.write("Andre Derian Style Selected")
 
 style_choice = st.radio(
                 "#### Choose a Style Image",
                 ["Modern", "Andre Derain"],)
 
+def style_prompt(style):
+    out = st.write(f"###### {style} style selected")
+    return style
+
+style_selected = style_prompt(style_choice)
+
 def style_embedding_path(style_choice):
     path = ""
     if style_choice == "Modern":
-        path = ""
+        path = MODERN_EMBEDDING_PATH
     elif style_choice == "Andre Derain":
-        path = ""
+        path = ANDRE_EMBEDDING_PATH
     else:
-        path = ""
+        path = MODERN_EMBEDDING_PATH
+    return path
+
+embedding_path = style_embedding_path(style_choice)
 
 if content_img:
     img = Image.open(content_img)
