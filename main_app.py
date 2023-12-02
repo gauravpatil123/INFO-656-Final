@@ -1,14 +1,13 @@
 import streamlit as st
 from PIL import Image
+import os
 
 MODERN_EMBEDDING_PATH = "./embeddings/modern_embeddings.pt"
 ANDRE_EMBEDDING_PATH = "./embeddings/andre-derain_embeddings.pt"
 style_path_1 = "./assets/style_images/modern.jpg"
 style_path_2 = "./assets/style_images/andre-derain.jpg"
-
-intro_str = """
-# My InST Feedback App 
-"""
+CONTENT_IMG_DIR = "./assets/content_images/"
+current_content_img_path = ""
 
 def load_img_from_path(path):
     img = Image.open(path)
@@ -29,12 +28,26 @@ def style_embedding_path(style_choice):
         path = MODERN_EMBEDDING_PATH
     return path
 
-if __name__=="__main__":
-    
-    st.write(intro_str)
+def save_uploaded_image(dir, uploaded_image):
+    global current_content_img_path
+    img = Image.open(uploaded_image)
+    st.image(img, width=500)
+    file_name = uploaded_image.name
+    file_type = uploaded_image.type
+    # st.write(file_name)
+    # st.write(file_type)
+    with open(os.path.join(dir, uploaded_image.name), "wb") as f:
+        current_content_img_path = os.path.join(dir, uploaded_image.name)
+        # st.write(current_content_img_path)
+        f.write(uploaded_image.getbuffer())
+    return st.success(f"File Uploaded to ./assets/content_images/")
 
-    content_img = st.sidebar.file_uploader(label='Upload a content Image', type=['png', 'jpg'])
-    #style_img = st.sidebar.file_uploader(label='Upload a style Image', type=['png', 'jpg'])
+if __name__=="__main__":
+    intro_str = """
+    # My InST Feedback App 
+    """
+
+    st.write(intro_str)
 
     style_image_1 = load_img_from_path(style_path_1)
     style_image_2 = load_img_from_path(style_path_2)
@@ -60,7 +73,9 @@ if __name__=="__main__":
 
     embedding_path = style_embedding_path(style_choice)
 
+    content_img = st.file_uploader(label='Upload a content Image', type=['png', 'jpg'])
+
     if content_img:
-        img = Image.open(content_img)
-        st.image(img, width=500)
+        save_uploaded_image(CONTENT_IMG_DIR, content_img)
+
 
