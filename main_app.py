@@ -14,6 +14,7 @@ CONTENT_IMG_BOOL = False
 output = None
 GENERATED_IMG_DIR = "./assets/generated_images/"
 save = None
+current_output_image_dir = ""
 
 def load_img_from_path(path):
     img = Image.open(path)
@@ -121,9 +122,13 @@ if __name__=="__main__":
 
     run_convert(convert, model, embedding_path, content_image_p, style_image_p, style_choice, gen_name)
 
+    current_output_image_dir = GENERATED_IMG_DIR + f"{style_choice}_{gen_name}.jpg"
+
     if output is not None:
         st.image(output, width=500)
-        download = st.download_button("Download Image", output)
+        image_download = Image.open(output)
+        with open(current_output_image_dir, "rb") as f:
+            download = st.download_button(label="Download Image", data=f, file_name="download.jpg", mime="image/jpeg")
 
 
 
