@@ -126,7 +126,6 @@ if __name__=="__main__":
 
     if output is not None:
         st.image(output, width=500)
-        image_download = Image.open(output)
         with open(current_output_image_dir, "rb") as f:
             download = st.download_button(label="Download Image", data=f, file_name="download.jpg", mime="image/jpeg")
 
