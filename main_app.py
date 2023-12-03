@@ -6,8 +6,12 @@ from InSt import generate_images as gen
 
 MODERN_EMBEDDING_PATH = "./embeddings/modern_embeddings.pt"
 ANDRE_EMBEDDING_PATH = "./embeddings/andre-derain_embeddings.pt"
+LONGHAIR_EMBEDDING_PATH = "./embeddings/longhair_embeddings.pt"
+WOMEN_EMBEDDING_PATH = "./embeddings/woman_embeddings.pt"
 style_modern = "./assets/style_images/modern.jpg"
 style_andre = "./assets/style_images/andre-derain.jpg"
+style_longhair = "./assets/style_images/longhair.jpg"
+style_women = "./assets/style_images/woman.png"
 CONTENT_IMG_DIR = "./assets/content_images/"
 current_content_img_path = None
 CONTENT_IMG_BOOL = False
@@ -31,6 +35,10 @@ def style_embedding_path(style_choice):
         path = MODERN_EMBEDDING_PATH
     elif style_choice == "Andre Derain":
         path = ANDRE_EMBEDDING_PATH
+    elif style_choice == "Long Hair":
+        path = LONGHAIR_EMBEDDING_PATH
+    elif style_choice == "Women":
+        path = WOMEN_EMBEDDING_PATH
     else:
         path = MODERN_EMBEDDING_PATH
     return path
@@ -41,6 +49,10 @@ def style_image_path(style_choice):
         path = style_modern
     elif style_choice == "Andre Derain":
         path = style_andre
+    elif style_choice == "Long Hair":
+        path = style_longhair
+    elif style_choice == "Women":
+        path = style_women
     else:
         path = style_modern
     return path
@@ -87,6 +99,8 @@ if __name__=="__main__":
 
     style_image_1 = load_img_from_path(style_modern)
     style_image_2 = load_img_from_path(style_andre)
+    style_image_3 = load_img_from_path(style_longhair)
+    style_image_4 = load_img_from_path(style_women)
 
     style_str = "## Choose a Style Image"
     st.write(style_str)
@@ -94,16 +108,26 @@ if __name__=="__main__":
     col1, col2 = st.columns(2)
 
     with col1:
-        dsi1 = st.image(style_image_1, width=300)
         st.write("### Modern")
+        dsi1 = st.image(style_image_1, width=300)
 
     with col2:
-        dsi2 = st.image(style_image_2, width=460)
         st.write("### Andre Derain")
+        dsi2 = st.image(style_image_2, width=460)
+
+    col3, col4 = st.columns(2)
+
+    with col3:
+        st.write("### Long Hair")
+        dsi3 = st.image(style_image_3, width=300)
+
+    with col4:
+        st.write("### Women")
+        dsi4 = st.image(style_image_4, width=350)
 
     style_choice = st.radio(
                 "#### Choose a Style Image",
-                ["Modern", "Andre Derain"],)
+                ["Modern", "Andre Derain", "Long Hair", "Women"],)
     
     style_selected = style_prompt(style_choice)
 
