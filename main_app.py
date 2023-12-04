@@ -20,16 +20,16 @@ GENERATED_IMG_DIR = "./assets/generated_images/"
 save = None
 current_output_image_dir = ""
 
-def load_img_from_path(path):
+def load_img_from_path(path:str):
     img = Image.open(path)
     return img
 
-def style_prompt(style):
+def style_prompt(style:str) -> str:
     out = f"###### {style} style selected"
     st.write(out)
     return out
 
-def style_embedding_path(style_choice):
+def style_embedding_path(style_choice:str) -> str:
     path = ""
     if style_choice == "Modern":
         path = MODERN_EMBEDDING_PATH
@@ -43,7 +43,7 @@ def style_embedding_path(style_choice):
         path = MODERN_EMBEDDING_PATH
     return path
 
-def style_image_path(style_choice):
+def style_image_path(style_choice:str) -> str:
     path = ""
     if style_choice == "Modern":
         path = style_modern
@@ -57,7 +57,7 @@ def style_image_path(style_choice):
         path = style_modern
     return path
 
-def save_uploaded_image(dir, uploaded_image):
+def save_uploaded_image(dir:str, uploaded_image):
     global current_content_img_path, CONTENT_IMG_BOOL
     img = Image.open(uploaded_image)
     st.image(img, width=500)
@@ -93,6 +93,7 @@ def run_convert(convert, model, embeddings, content_img_path, style_image_path, 
         output = out
 
 if __name__=="__main__":
+    
     intro_str = """
     # My InST Feedback App 
     """
