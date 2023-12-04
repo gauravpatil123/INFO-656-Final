@@ -61,8 +61,8 @@ def save_uploaded_image(dir, uploaded_image):
     global current_content_img_path, CONTENT_IMG_BOOL
     img = Image.open(uploaded_image)
     st.image(img, width=500)
-    file_name = uploaded_image.name
-    file_type = uploaded_image.type
+    # file_name = uploaded_image.name
+    # file_type = uploaded_image.type
     # st.write(file_name)
     # st.write(file_type)
     with open(os.path.join(dir, uploaded_image.name), "wb") as f:
@@ -75,10 +75,12 @@ def save_uploaded_image(dir, uploaded_image):
 def convert_image(model, embeddings, content_img_path, style_image_path):
     global CONTENT_IMG_BOOL, current_content_img_path
     if CONTENT_IMG_BOOL and current_content_img_path:
-        out = gen(model, embeddings, content_img_path, style_image_path)
-        pass
+        with st.status("Converting image..."):
+            st.write("Image conversion in progress...")
+            out = gen(model, embeddings, content_img_path, style_image_path)
+            st.write("Image conversion complete!")
     else:
-        st.write(f"No content Image Uploaded, try to upload a content image.")
+        st.write(f"No content image uploaded, try to upload a content image.")
         out = None
     return out
 
