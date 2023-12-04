@@ -19,6 +19,9 @@ output = None
 GENERATED_IMG_DIR = "./assets/generated_images/"
 save = None
 current_output_image_dir = ""
+feedback = None
+MODEL_TYPE = "cpu"
+FEEDBACK_LOG = "./assets/logs/feedback/feedback_log.txt"
 
 def load_img_from_path(path:str):
     img = Image.open(path)
@@ -66,9 +69,9 @@ def save_uploaded_image(dir:str, uploaded_image):
     # st.write(file_name)
     # st.write(file_type)
     with open(os.path.join(dir, uploaded_image.name), "wb") as f:
+        f.write(uploaded_image.getbuffer())
         current_content_img_path = os.path.join(dir, uploaded_image.name)
         # st.write(current_content_img_path)
-        f.write(uploaded_image.getbuffer())
         CONTENT_IMG_BOOL = True
     return st.success(f"File Uploaded to ./assets/content_images/")
 
@@ -92,16 +95,17 @@ def run_convert(convert, model, embeddings, content_img_path, style_image_path, 
         out.save(os.path.join(GENERATED_IMG_DIR, name))
         output = out
 
-def feedback_module():
-    st.write("##### Is the converted image acceptable?")
-    col5, col6, col7, col8 = st.columns(4)
-    with col5:
-        positive = st.button("Acceptable 👍")
-        fb = "positive"
-    with col6:
-        negative = st.button("Unacceptable 👎")
-        fb = "negative"
-    return fb
+def generate_feedback(feedback_list):
+    p, n = feedback_list
+    if p:
+        feedback = "positive"
+    elif n:
+        feedback = "negative"
+    return feedback
+
+def record_feedback(embedding, style_img, content_img, global_seed, feedback, model_type=MODEL_TYPE, feedback_file=FEEDBACK_LOG):
+    with open(feedback_file, "a") as fb_log:
+        fb_log.write(f"Embedding: ")
 
 if __name__=="__main__":
     
@@ -164,9 +168,22 @@ if __name__=="__main__":
 
     if output is not None:
         st.image(output, width=500)
+
+        st.write("##### Is the converted image acceptable?")
+        
+        positive = st.button("Acceptable 👍")
+        negative = st.button("Unacceptable 👎")
+
+        feedback_list = [positive, negative]
+
+        feedback = generate_feedback(feedback_list)
+
+        if feedback is not None:
+            st.write(feedback)
+
         with open(current_output_image_dir, "rb") as f:
             download = st.download_button(label="Download Image", data=f, file_name="download.jpg", mime="image/jpeg")
-        feedback_module()
+            
 
 
 
