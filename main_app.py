@@ -19,7 +19,6 @@ output = None
 GENERATED_IMG_DIR = "./assets/generated_images/"
 save = None
 current_output_image_dir = ""
-feedback = ""
 
 def load_img_from_path(path:str):
     img = Image.open(path)
@@ -93,6 +92,17 @@ def run_convert(convert, model, embeddings, content_img_path, style_image_path, 
         out.save(os.path.join(GENERATED_IMG_DIR, name))
         output = out
 
+def feedback_module():
+    st.write("##### Is the converted image acceptable?")
+    col5, col6, col7, col8 = st.columns(4)
+    with col5:
+        positive = st.button("Acceptable 👍")
+        fb = "positive"
+    with col6:
+        negative = st.button("Unacceptable 👎")
+        fb = "negative"
+    return fb
+
 if __name__=="__main__":
     
     intro_str = """
@@ -156,15 +166,8 @@ if __name__=="__main__":
         st.image(output, width=500)
         with open(current_output_image_dir, "rb") as f:
             download = st.download_button(label="Download Image", data=f, file_name="download.jpg", mime="image/jpeg")
+        feedback_module()
 
-    st.write("##### Is the converted image acceptable?")
-
-    col5, col6 = st.columns(2)
-
-    with col5:
-        positive = st.button("Acceptable 👍")
-    with col6:
-        negative = st.button("Unacceptable 👎")
 
 
 
