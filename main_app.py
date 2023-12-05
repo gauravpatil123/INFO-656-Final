@@ -96,12 +96,12 @@ def run_convert(convert, model, embeddings, content_img_path, style_image_path, 
         output = out
 
 def generate_feedback(feedback_list):
+    global feedback
     p, n = feedback_list
     if p:
         feedback = "positive"
     elif n:
         feedback = "negative"
-    return feedback
 
 def record_feedback(embedding, style_img, content_img, global_seed, feedback, model_type=MODEL_TYPE, feedback_file=FEEDBACK_LOG):
     with open(feedback_file, "a") as fb_log:
@@ -169,17 +169,17 @@ if __name__=="__main__":
     if output is not None:
         st.image(output, width=500)
 
-        st.write("##### Is the converted image acceptable?")
+        # st.write("##### Is the converted image acceptable?")
         
-        positive = st.button("Acceptable 👍")
-        negative = st.button("Unacceptable 👎")
+        # positive = st.button("Acceptable 👍")
+        # negative = st.button("Unacceptable 👎")
 
-        feedback_list = [positive, negative]
+        # feedback_list = [positive, negative]
 
-        feedback = generate_feedback(feedback_list)
+        # generate_feedback(feedback_list)
 
-        if feedback is not None:
-            st.write(feedback)
+        # if feedback is not None:
+        #     st.write(feedback)
 
         with open(current_output_image_dir, "rb") as f:
             download = st.download_button(label="Download Image", data=f, file_name="download.jpg", mime="image/jpeg")
