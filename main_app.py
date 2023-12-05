@@ -15,10 +15,9 @@ style_women = "./assets/style_images/woman.png"
 CONTENT_IMG_DIR = "./assets/content_images/"
 current_content_img_path = None
 CONTENT_IMG_BOOL = False
-output = None
 GENERATED_IMG_DIR = "./assets/generated_images/"
 save = None
-current_output_image_dir = ""
+current_output_image_dir = None
 feedback = None
 MODEL_TYPE = "cpu"
 FEEDBACK_LOG = "./assets/logs/feedback/feedback_log.txt"
@@ -88,12 +87,13 @@ def convert_image(model, embeddings, content_img_path, style_image_path):
     return out
 
 def run_convert(convert, model, embeddings, content_img_path, style_image_path, style_name, gen_name):
-    global output, GENERATED_IMG_DIR
+    global GENERATED_IMG_DIR
     if convert:
         out = convert_image(model, embeddings, content_img_path, style_image_path)
         name = f"{style_name}_{gen_name}.jpg"
-        out.save(os.path.join(GENERATED_IMG_DIR, name))
-        output = out
+        path = os.path.join(GENERATED_IMG_DIR, name)
+        out.save(path)
+        return path
 
 def generate_feedback(feedback_list):
     global feedback
@@ -103,12 +103,20 @@ def generate_feedback(feedback_list):
     elif n:
         feedback = "negative"
 
-def record_feedback(embedding, style_img, content_img, global_seed, feedback, model_type=MODEL_TYPE, feedback_file=FEEDBACK_LOG):
+def record_feedback(embedding, style_img, content_img, feedback, model_type=MODEL_TYPE, feedback_file=FEEDBACK_LOG):
+    global current_output_image_dir
+
+    feedback_str = "{\nEmbedding: " + f"{embedding}" + ",\n"
+    feedback_str += "Style Image: " + f"{style_img}" + ",\n"
+    feedback_str += "Content Image: " + f"{content_img}" + ",\n"
+    feedback_str += "Feedback: " + f"{feedback}" + ",\n"
+    feedback_str += "Model Type: " + f"{model_type}" + "\n}\n"
+
     with open(feedback_file, "a") as fb_log:
-        fb_log.write(f"Embedding: ")
+        fb_log.write(feedback_str)
 
 if __name__=="__main__":
-    
+
     intro_str = """
     # My InST Feedback App 
     """
@@ -162,27 +170,30 @@ if __name__=="__main__":
     gen_name = st.text_input('Please name the generated image')
     convert = st.button("Generate Image")
 
-    run_convert(convert, model, embedding_path, content_image_p, style_image_p, style_choice, gen_name)
+    output_path = run_convert(convert, model, embedding_path, content_image_p, style_image_p, style_choice, gen_name)
 
-    current_output_image_dir = GENERATED_IMG_DIR + f"{style_choice}_{gen_name}.jpg"
+    current_output_image_dir = output_path
 
-    if output is not None:
-        st.image(output, width=500)
+    if current_output_image_dir is not None:
 
-        # st.write("##### Is the converted image acceptable?")
-        
-        # positive = st.button("Acceptable 👍")
-        # negative = st.button("Unacceptable 👎")
+        current_output_image = load_img_from_path(current_output_image_dir)
 
-        # feedback_list = [positive, negative]
+        st.image(current_output_image, width=500)
 
-        # generate_feedback(feedback_list)
+        # with open(current_output_image_dir, "rb") as f:
+        #     download = st.download_button(label="Download Image", data=f, file_name="download.jpg", mime="image/jpeg")
 
-        # if feedback is not None:
-        #     st.write(feedback)
+    st.write("##### Is the converted image acceptable?")
 
-        with open(current_output_image_dir, "rb") as f:
-            download = st.download_button(label="Download Image", data=f, file_name="download.jpg", mime="image/jpeg")
+    positive = st.button("Acceptable 👍")
+    negative = st.button("Unacceptable 👎")
+
+    feedback_list = [positive, negative]
+
+    generate_feedback(feedback_list)
+
+    if feedback is not None:
+        record_feedback(embedding_path, style_image_p, content_image_p, feedback)
             
 
 
