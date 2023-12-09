@@ -3,6 +3,7 @@ from PIL import Image
 import os
 from InSt import model
 from InSt import generate_images as gen
+from time import gmtime, strftime
 
 MODERN_EMBEDDING_PATH = "./embeddings/modern_embeddings.pt"
 ANDRE_EMBEDDING_PATH = "./embeddings/andre-derain_embeddings.pt"
@@ -107,9 +108,12 @@ def generate_feedback(feedback_list):
 def record_feedback(embedding, style_img, content_img, feedback, model_type=MODEL_TYPE, feedback_file=FEEDBACK_LOG):
     global current_output_image_dir
 
+    curr_time_gmt = strftime("%a, %d %b %Y %H:%M:%S +0000", gmtime())
+
     feedback_str = "{\nEmbedding: " + f"{embedding}" + ",\n"
     feedback_str += "Style Image: " + f"{style_img}" + ",\n"
     feedback_str += "Content Image: " + f"{content_img}" + ",\n"
+    feedback_str += "Feedback Record Time (GMT): " + f"{curr_time_gmt}" + ",\n"
     feedback_str += "Feedback: " + f"{feedback}" + ",\n"
     feedback_str += "Model Type: " + f"{model_type}" + "\n}\n"
 
