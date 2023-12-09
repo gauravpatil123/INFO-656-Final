@@ -169,3 +169,7 @@ embeddings
 .models/
 models/
 models
+test_images
+test_images/
+.test_images/
+.test_images/temp

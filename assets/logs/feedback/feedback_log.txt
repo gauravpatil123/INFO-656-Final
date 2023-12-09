@@ -1,1 +1,209 @@
 
+{
+Embedding: ./embeddings/modern_embeddings.pt,
+Style Image: ./assets/style_images/modern.jpg,
+Content Image: ./assets/content_images/profile-pic.jpg,
+Feedback Record Time (GMT): Sat, 09 Dec 2023 20:06:50 +0000,
+Feedback: positive,
+Model Type: cpu
+}
+{
+Embedding: ./embeddings/modern_embeddings.pt,
+Style Image: ./assets/style_images/modern.jpg,
+Content Image: ./assets/content_images/college_walk.jpg,
+Feedback Record Time (GMT): Sat, 09 Dec 2023 20:10:24 +0000,
+Feedback: positive,
+Model Type: cpu
+}
+{
+Embedding: ./embeddings/andre-derain_embeddings.pt,
+Style Image: ./assets/style_images/andre-derain.jpg,
+Content Image: ./assets/content_images/college_walk.jpg,
+Feedback Record Time (GMT): Sat, 09 Dec 2023 20:13:37 +0000,
+Feedback: negative,
+Model Type: cpu
+}
+{
+Embedding: ./embeddings/modern_embeddings.pt,
+Style Image: ./assets/style_images/modern.jpg,
+Content Image: ./assets/content_images/centralpk.jpg,
+Feedback Record Time (GMT): Sat, 09 Dec 2023 20:18:10 +0000,
+Feedback: negative,
+Model Type: cpu
+}
+{
+Embedding: ./embeddings/andre-derain_embeddings.pt,
+Style Image: ./assets/style_images/andre-derain.jpg,
+Content Image: ./assets/content_images/centralpk.jpg,
+Feedback Record Time (GMT): Sat, 09 Dec 2023 20:21:50 +0000,
+Feedback: negative,
+Model Type: cpu
+}
+{
+Embedding: ./embeddings/modern_embeddings.pt,
+Style Image: ./assets/style_images/modern.jpg,
+Content Image: ./assets/content_images/wsqpk.jpg,
+Feedback Record Time (GMT): Sat, 09 Dec 2023 20:27:50 +0000,
+Feedback: positive,
+Model Type: cpu
+}
+{
+Embedding: ./embeddings/andre-derain_embeddings.pt,
+Style Image: ./assets/style_images/andre-derain.jpg,
+Content Image: ./assets/content_images/wsqpk.jpg,
+Feedback Record Time (GMT): Sat, 09 Dec 2023 20:32:06 +0000,
+Feedback: negative,
+Model Type: cpu
+}
+{
+Embedding: ./embeddings/modern_embeddings.pt,
+Style Image: ./assets/style_images/modern.jpg,
+Content Image: ./assets/content_images/Starry-Night-canvas-Vincent-van-Gogh-New-1889.jpg,
+Feedback Record Time (GMT): Sat, 09 Dec 2023 20:37:18 +0000,
+Feedback: negative,
+Model Type: cpu
+}
+{
+Embedding: ./embeddings/andre-derain_embeddings.pt,
+Style Image: ./assets/style_images/andre-derain.jpg,
+Content Image: ./assets/content_images/Starry-Night-canvas-Vincent-van-Gogh-New-1889.jpg,
+Feedback Record Time (GMT): Sat, 09 Dec 2023 20:41:35 +0000,
+Feedback: positive,
+Model Type: cpu
+}
+{
+Embedding: ./embeddings/modern_embeddings.pt,
+Style Image: ./assets/style_images/modern.jpg,
+Content Image: ./assets/content_images/cooperst.jpg,
+Feedback Record Time (GMT): Sat, 09 Dec 2023 20:47:35 +0000,
+Feedback: positive,
+Model Type: cpu
+}
+{
+Embedding: ./embeddings/andre-derain_embeddings.pt,
+Style Image: ./assets/style_images/andre-derain.jpg,
+Content Image: ./assets/content_images/cooperst.jpg,
+Feedback Record Time (GMT): Sat, 09 Dec 2023 20:50:42 +0000,
+Feedback: negative,
+Model Type: cpu
+}
+{
+Embedding: ./embeddings/modern_embeddings.pt,
+Style Image: ./assets/style_images/modern.jpg,
+Content Image: ./assets/content_images/w14st.jpg,
+Feedback Record Time (GMT): Sat, 09 Dec 2023 20:54:16 +0000,
+Feedback: positive,
+Model Type: cpu
+}
+{
+Embedding: ./embeddings/andre-derain_embeddings.pt,
+Style Image: ./assets/style_images/andre-derain.jpg,
+Content Image: ./assets/content_images/w14st.jpg,
+Feedback Record Time (GMT): Sat, 09 Dec 2023 20:57:19 +0000,
+Feedback: negative,
+Model Type: cpu
+}
+{
+Embedding: ./embeddings/modern_embeddings.pt,
+Style Image: ./assets/style_images/modern.jpg,
+Content Image: ./assets/content_images/sgmarinasl.jpg,
+Feedback Record Time (GMT): Sat, 09 Dec 2023 21:01:14 +0000,
+Feedback: negative,
+Model Type: cpu
+}
+{
+Embedding: ./embeddings/andre-derain_embeddings.pt,
+Style Image: ./assets/style_images/andre-derain.jpg,
+Content Image: ./assets/content_images/sgmarinasl.jpg,
+Feedback Record Time (GMT): Sat, 09 Dec 2023 21:04:58 +0000,
+Feedback: negative,
+Model Type: cpu
+}
+{
+Embedding: ./embeddings/longhair_embeddings.pt,
+Style Image: ./assets/style_images/longhair.jpg,
+Content Image: ./assets/content_images/bolly-act.JPG,
+Feedback Record Time (GMT): Sat, 09 Dec 2023 21:27:51 +0000,
+Feedback: negative,
+Model Type: cpu
+}
+{
+Embedding: ./embeddings/woman_embeddings.pt,
+Style Image: ./assets/style_images/woman.png,
+Content Image: ./assets/content_images/priya.jpg,
+Feedback Record Time (GMT): Sat, 09 Dec 2023 21:40:00 +0000,
+Feedback: negative,
+Model Type: cpu
+}
+{
+Embedding: ./embeddings/modern_embeddings.pt,
+Style Image: ./assets/style_images/modern.jpg,
+Content Image: ./assets/content_images/indiagate.JPG,
+Feedback Record Time (GMT): Sat, 09 Dec 2023 21:44:05 +0000,
+Feedback: positive,
+Model Type: cpu
+}
+{
+Embedding: ./embeddings/longhair_embeddings.pt,
+Style Image: ./assets/style_images/longhair.jpg,
+Content Image: ./assets/content_images/indiagate.JPG,
+Feedback Record Time (GMT): Sat, 09 Dec 2023 21:47:14 +0000,
+Feedback: positive,
+Model Type: cpu
+}
+{
+Embedding: ./embeddings/modern_embeddings.pt,
+Style Image: ./assets/style_images/modern.jpg,
+Content Image: ./assets/content_images/nycbridge.JPG,
+Feedback Record Time (GMT): Sat, 09 Dec 2023 21:54:29 +0000,
+Feedback: negative,
+Model Type: cpu
+}
+{
+Embedding: ./embeddings/andre-derain_embeddings.pt,
+Style Image: ./assets/style_images/andre-derain.jpg,
+Content Image: ./assets/content_images/nycbridge.JPG,
+Feedback Record Time (GMT): Sat, 09 Dec 2023 21:57:54 +0000,
+Feedback: positive,
+Model Type: cpu
+}
+{
+Embedding: ./embeddings/modern_embeddings.pt,
+Style Image: ./assets/style_images/modern.jpg,
+Content Image: ./assets/content_images/mgardens-summer.JPG,
+Feedback Record Time (GMT): Sat, 09 Dec 2023 22:01:53 +0000,
+Feedback: negative,
+Model Type: cpu
+}
+{
+Embedding: ./embeddings/modern_embeddings.pt,
+Style Image: ./assets/style_images/modern.jpg,
+Content Image: ./assets/content_images/mgardens-winter.JPG,
+Feedback Record Time (GMT): Sat, 09 Dec 2023 22:05:06 +0000,
+Feedback: negative,
+Model Type: cpu
+}
+{
+Embedding: ./embeddings/modern_embeddings.pt,
+Style Image: ./assets/style_images/modern.jpg,
+Content Image: ./assets/content_images/mgardens.JPG,
+Feedback Record Time (GMT): Sat, 09 Dec 2023 22:08:36 +0000,
+Feedback: positive,
+Model Type: cpu
+}
+{
+Embedding: ./embeddings/modern_embeddings.pt,
+Style Image: ./assets/style_images/modern.jpg,
+Content Image: ./assets/content_images/almamater.jpg,
+Feedback Record Time (GMT): Sat, 09 Dec 2023 22:12:07 +0000,
+Feedback: negative,
+Model Type: cpu
+}
+{
+Embedding: ./embeddings/andre-derain_embeddings.pt,
+Style Image: ./assets/style_images/andre-derain.jpg,
+Content Image: ./assets/content_images/almamater.jpg,
+Feedback Record Time (GMT): Sat, 09 Dec 2023 22:15:19 +0000,
+Feedback: positive,
+Model Type: cpu
+}
