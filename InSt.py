@@ -180,7 +180,10 @@ def main(prompt = '', content_dir = '', style_dir='',ddim_steps = 50,strength = 
 # model.embedding_manager.load("./embeddings/modern_embeddings.pt")
 # model = model.to(device)
 
-def generate_images(model, embeddings, content_img, style_img, seed=42):
+def generate_images(model, embeddings:str, content_img:str, style_img:str, seed=42):
+    """
+    Returns converted Image using all the input parameters
+    """
     model.embedding_manager.load(embeddings)
     model = model.to(device)
 
