@@ -195,7 +195,7 @@ def record_feedback(embedding:str, style_img:str, content_img:str, feedback:str,
 if __name__=="__main__":
 
     intro_str = """
-    # My InST Feedback App 
+    # InST Feedback Logger 
     """
 
     st.write(intro_str)
