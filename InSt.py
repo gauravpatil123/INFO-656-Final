@@ -180,7 +180,7 @@ def main(prompt = '', content_dir = '', style_dir='',ddim_steps = 50,strength = 
 # model.embedding_manager.load("./embeddings/modern_embeddings.pt")
 # model = model.to(device)
 
-def generate_images(model, embeddings, content_img, style_img):
+def generate_images(model, embeddings, content_img, style_img, seed=42):
     model.embedding_manager.load(embeddings)
     model = model.to(device)
 
@@ -189,6 +189,6 @@ def generate_images(model, embeddings, content_img, style_img):
                 style_dir = style_img, \
                 ddim_steps = 50, \
                 strength = 0.7, \
-                seed=42, \
+                seed=seed, \
                 model = model)
     return out
