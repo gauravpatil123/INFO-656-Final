@@ -12,3 +12,11 @@ Content Image: ./assets/content_images/wsqpk.jpg,
 Feedback: negative,
 Model Type: cpu
 }
+{
+Embedding: ./embeddings/modern_embeddings.pt,
+Style Image: ./assets/style_images/modern.jpg,
+Content Image: ./assets/content_images/columbia_low.jpg,
+Feedback Record Time (GMT): Sat, 09 Dec 2023 04:14:23 +0000,
+Feedback: negative,
+Model Type: cpu
+}
