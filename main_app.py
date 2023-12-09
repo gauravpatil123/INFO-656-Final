@@ -99,14 +99,10 @@ def save_uploaded_image(dir:str, uploaded_image):
     global current_content_img_path, CONTENT_IMG_BOOL
     img = Image.open(uploaded_image)
     st.image(img, width=500)
-    # file_name = uploaded_image.name
-    # file_type = uploaded_image.type
-    # st.write(file_name)
-    # st.write(file_type)
+
     with open(os.path.join(dir, uploaded_image.name), "wb") as f:
         f.write(uploaded_image.getbuffer())
         current_content_img_path = os.path.join(dir, uploaded_image.name)
-        # st.write(current_content_img_path)
         CONTENT_IMG_BOOL = True
     return st.success(f"File Uploaded to ./assets/content_images/")
 
@@ -184,8 +180,6 @@ def record_feedback(embedding:str, style_img:str, content_img:str, feedback:str,
         generates feedback_str
         logs the feedback_str in the feedback_log file
     """
-    # global current_output_image_dir
-
     curr_time_gmt = strftime("%a, %d %b %Y %H:%M:%S +0000", gmtime())
 
     feedback_str = "{\nEmbedding: " + f"{embedding}" + ",\n"
@@ -263,6 +257,7 @@ if __name__=="__main__":
 
         st.image(current_output_image, width=500)
 
+        # Download Button (will have to set states to make it work)
         # with open(current_output_image_dir, "rb") as f:
         #     download = st.download_button(label="Download Image", data=f, file_name="download.jpg", mime="image/jpeg")
 
