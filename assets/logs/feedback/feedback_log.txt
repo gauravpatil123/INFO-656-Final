@@ -5,3 +5,10 @@ Content Image: ./assets/content_images/wsqpk.jpg,
 Feedback: negative,
 Model Type: cpu
 }
+{
+Embedding: ./embeddings/modern_embeddings.pt,
+Style Image: ./assets/style_images/modern.jpg,
+Content Image: ./assets/content_images/wsqpk.jpg,
+Feedback: negative,
+Model Type: cpu
+}
