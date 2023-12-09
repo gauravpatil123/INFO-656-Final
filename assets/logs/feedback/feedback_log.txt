@@ -20,3 +20,11 @@ Feedback Record Time (GMT): Sat, 09 Dec 2023 04:14:23 +0000,
 Feedback: negative,
 Model Type: cpu
 }
+{
+Embedding: ./embeddings/modern_embeddings.pt,
+Style Image: ./assets/style_images/modern.jpg,
+Content Image: ./assets/content_images/sgmarinasl.jpg,
+Feedback Record Time (GMT): Sat, 09 Dec 2023 19:47:06 +0000,
+Feedback: negative,
+Model Type: cpu
+}
