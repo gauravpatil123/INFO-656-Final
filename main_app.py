@@ -132,7 +132,7 @@ def convert_image(model, embeddings:str, content_img_path:str, style_image_path:
         out = None
     return out
 
-def run_convert(convert:bool, model, embeddings:str, content_img_path:str, style_image_path:str, style_name:str, gen_name:str):
+def run_convert(convert:bool, model, embeddings:str, content_img_path:str, style_image_path:str, style_name:str, gen_name:str) -> str:
     """
     Input:
         convert: Bool to check if generate button is clicked on the main app
@@ -155,7 +155,14 @@ def run_convert(convert:bool, model, embeddings:str, content_img_path:str, style
         out.save(path)
         return path
 
-def generate_feedback(feedback_list):
+def generate_feedback(feedback_list:list):
+    """
+    Input:
+        feedback_list: list containing bool list of [positive, negative] feedback
+    Action:
+        unpacks the feedback_list 
+        sets the global feedback to positive or negative depending on input list
+    """
     global feedback
     p, n = feedback_list
     if p:
@@ -163,8 +170,21 @@ def generate_feedback(feedback_list):
     elif n:
         feedback = "negative"
 
-def record_feedback(embedding, style_img, content_img, feedback, model_type=MODEL_TYPE, feedback_file=FEEDBACK_LOG):
-    global current_output_image_dir
+def record_feedback(embedding:str, style_img:str, content_img:str, feedback:str, model_type:str=MODEL_TYPE, feedback_file:str=FEEDBACK_LOG):
+    """
+    Input:
+        embedding: selected embedding path
+        style_img: selected style image path
+        content_img: uploaded content image path
+        feedback: global feedback set from users imput
+        model_type: global model type used for conversion
+        feedback_file: path to feedback log file
+    Action:
+        gets current time using time library
+        generates feedback_str
+        logs the feedback_str in the feedback_log file
+    """
+    # global current_output_image_dir
 
     curr_time_gmt = strftime("%a, %d %b %Y %H:%M:%S +0000", gmtime())
 
