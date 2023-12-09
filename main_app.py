@@ -21,6 +21,7 @@ current_output_image_dir = None
 feedback = None
 MODEL_TYPE = "cpu"
 FEEDBACK_LOG = "./assets/logs/feedback/feedback_log.txt"
+GEN_SEED = 42
 
 def load_img_from_path(path:str):
     img = Image.open(path)
@@ -75,11 +76,11 @@ def save_uploaded_image(dir:str, uploaded_image):
     return st.success(f"File Uploaded to ./assets/content_images/")
 
 def convert_image(model, embeddings, content_img_path, style_image_path):
-    global CONTENT_IMG_BOOL, current_content_img_path
+    global CONTENT_IMG_BOOL, current_content_img_path, GEN_SEED
     if CONTENT_IMG_BOOL and current_content_img_path:
         with st.status("Converting image..."):
             st.write("Image conversion in progress...")
-            out = gen(model, embeddings, content_img_path, style_image_path)
+            out = gen(model, embeddings, content_img_path, style_image_path, GEN_SEED)
             st.write("Image conversion complete!")
     else:
         st.write(f"No content image uploaded, try to upload a content image.")
