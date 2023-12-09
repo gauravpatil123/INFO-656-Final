@@ -185,8 +185,13 @@ if __name__=="__main__":
 
     st.write("##### Is the converted image acceptable?")
 
-    positive = st.button("Acceptable 👍")
-    negative = st.button("Unacceptable 👎")
+    col5, col6, col7, col8 = st.columns(4)
+
+    with col5:
+        positive = st.button("Acceptable 👍")
+    
+    with col6:
+        negative = st.button("Unacceptable 👎")
 
     feedback_list = [positive, negative]
 

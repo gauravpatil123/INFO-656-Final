@@ -1,0 +1,7 @@
+{
+Embedding: ./embeddings/andre-derain_embeddings.pt,
+Style Image: ./assets/style_images/andre-derain.jpg,
+Content Image: ./assets/content_images/wsqpk.jpg,
+Feedback: negative,
+Model Type: cpu
+}
