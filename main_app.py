@@ -5,6 +5,7 @@ from InSt import model
 from InSt import generate_images as gen
 from time import gmtime, strftime
 
+# Global Variables
 MODERN_EMBEDDING_PATH = "./embeddings/modern_embeddings.pt"
 ANDRE_EMBEDDING_PATH = "./embeddings/andre-derain_embeddings.pt"
 LONGHAIR_EMBEDDING_PATH = "./embeddings/longhair_embeddings.pt"
@@ -24,16 +25,33 @@ MODEL_TYPE = "cpu"
 FEEDBACK_LOG = "./assets/logs/feedback/feedback_log.txt"
 GEN_SEED = 42
 
+# Utility Functions
 def load_img_from_path(path:str):
+    """
+    Function to load images from path
+    """
     img = Image.open(path)
     return img
 
 def style_prompt(style:str) -> str:
+    """
+    Input:
+        style: selected style as a string
+    Action & Output:
+        Writes the markdown str in st app &
+        Return markdown str of selected style
+    """
     out = f"###### {style} style selected"
     st.write(out)
     return out
 
 def style_embedding_path(style_choice:str) -> str:
+    """
+    Input:
+        style_choice: selected style from the app
+    Output:
+        Returns the embedding path of the selected style
+    """
     path = ""
     if style_choice == "Modern":
         path = MODERN_EMBEDDING_PATH
@@ -48,6 +66,12 @@ def style_embedding_path(style_choice:str) -> str:
     return path
 
 def style_image_path(style_choice:str) -> str:
+    """
+    Input:
+        style_choice: selected style from the app
+    Output:
+        Returns the image path of the selected style image
+    """
     path = ""
     if style_choice == "Modern":
         path = style_modern
@@ -62,6 +86,16 @@ def style_image_path(style_choice:str) -> str:
     return path
 
 def save_uploaded_image(dir:str, uploaded_image):
+    """
+    Input:
+        dir: directory path for content images
+        uploaded_image: content image uploaded from st file uploader
+    Output & Action:
+        saves the uploaded images to dir
+        sets global current_content_img_path to current uploaded image path
+        sets global content_img_bool to true
+        writes successfull file upload message the streamlit app
+    """
     global current_content_img_path, CONTENT_IMG_BOOL
     img = Image.open(uploaded_image)
     st.image(img, width=500)
