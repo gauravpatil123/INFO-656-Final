@@ -110,7 +110,17 @@ def save_uploaded_image(dir:str, uploaded_image):
         CONTENT_IMG_BOOL = True
     return st.success(f"File Uploaded to ./assets/content_images/")
 
-def convert_image(model, embeddings, content_img_path, style_image_path):
+def convert_image(model, embeddings:str, content_img_path:str, style_image_path:str):
+    """
+    Input:
+        model: imported model from InSt
+        embeddings: path for selected embeddings
+        content_img_path: path for uploaded content image
+        style_image_path: path for selected style image
+    Output:
+        out: output image after converting content image using the imported model
+                or None if no content image is uploaded
+    """
     global CONTENT_IMG_BOOL, current_content_img_path, GEN_SEED
     if CONTENT_IMG_BOOL and current_content_img_path:
         with st.status("Converting image..."):
@@ -122,7 +132,21 @@ def convert_image(model, embeddings, content_img_path, style_image_path):
         out = None
     return out
 
-def run_convert(convert, model, embeddings, content_img_path, style_image_path, style_name, gen_name):
+def run_convert(convert:bool, model, embeddings:str, content_img_path:str, style_image_path:str, style_name:str, gen_name:str):
+    """
+    Input:
+        convert: Bool to check if generate button is clicked on the main app
+        model: imported model from InSt
+        embeddings: path for selected embeddings
+        content_img_path: path for uploaded content image
+        style_image_path: path for selected style image
+        style_name: name of the selected style
+        gen_name: inout name for the generated image from st input
+    Output & Action:
+        runs convert_image function and saves the output image using the styel and gen name from input
+        saves the output image in the global generated image directory
+        returns the path of output image directory
+    """
     global GENERATED_IMG_DIR
     if convert:
         out = convert_image(model, embeddings, content_img_path, style_image_path)
