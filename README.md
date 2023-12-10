@@ -22,7 +22,8 @@ This script also defines the "generate_images" function to be used for convertin
 - "main_app.py"<br>
 This script creates a local stremlit app to be used to upload a contnent image and then convert it to the selected style.<br>
 Further this app aloows the user to give a positive or negative feedback for the output result.<b>
-To run this app use: ```streamlit run main_app.py```
+To run this app use the following command in terminal:<br> 
+```streamlit run main_app.py```
 
 **assets**</br>
 - content_images</br>
