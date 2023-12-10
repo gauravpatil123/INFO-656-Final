@@ -13,7 +13,8 @@ This app is built over InST<sup>[1]</sup>, as a feedback logger app for outputs 
 
 **Requirements**</br>
 The requirements for dependencies & libraries for this app are mentioned in "requirements.txt"<br>
-Please create an environment with these mentioned requirements before running the app.
+Please create an environment with these mentioned requirements before running the app.<br>
+Download Anaconda on your local computer.<br>
 Run the following steps in terminal:
 ```shell
 1. conda create -n <environment name> python=3.9
@@ -30,7 +31,9 @@ This script also defines the "generate_images" function to be used for convertin
 This script creates a local stremlit app to be used to upload a contnent image and then convert it to the selected style.<br>
 Further this app aloows the user to give a positive or negative feedback for the output result.<b>
 To run this app use the following command in terminal:<br> 
-```streamlit run main_app.py```
+```shell
+streamlit run main_app.py
+```
 
 **assets**</br>
 - content_images</br>
