@@ -14,6 +14,12 @@ This app is built over InST<sup>[1]</sup>, as a feedback logger app for outputs 
 **Requirements**</br>
 The requirements for dependencies & libraries for this app are mentioned in "requirements.txt"<br>
 Please create an environment with these mentioned requirements before running the app.
+Run the following steps in terminal:
+```shell
+1. conda create -n <environment name> python=3.9
+2. conda activate <evnironment name>
+3. pip install -r requirements.txt
+```
 
 **Scripts**</br>
 - "InSt.py"<br>
