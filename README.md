@@ -9,7 +9,7 @@ A Feedback Logger App of InST Project.
 - Sources
 
 **About**</br>
-This app is built over InST[1], as a feedback logger app for outputs from InST models.
+This app is built over InST<sup>[1]</sup>, as a feedback logger app for outputs from InST models.
 
 **Requirements**</br>
 The requirements for dependencies & libraries for this app are mentioned in "requirements.txt"<br>
