@@ -9,7 +9,7 @@ A Feedback Logger App of InST Project.
 - Sources
 
 **About**</br>
-This app is built over InST<sup>[1]</sup>, as a feedback logger app for outputs from InST models.
+This app is built over InST<sup>1</sup>, as a feedback logger app for outputs from InST models.
 
 **Requirements**</br>
 The requirements for dependencies & libraries for this app are mentioned in "requirements.txt"<br>
@@ -40,4 +40,4 @@ Contains all the style images on which are used by the model.
 Contains the feedback_log txt file with all the feedbacks along with other metadata.
 
 **Sources**</br>
-[1] Yuxin Zhang et.al. (2023). Inversion-Based Style Transfer with Diffusion Models (InST). GitHub. https://github.com/zyxElsa/InST/tree/main
+1 Yuxin Zhang et.al. (2023). Inversion-Based Style Transfer with Diffusion Models (InST). GitHub. https://github.com/zyxElsa/InST/tree/main
