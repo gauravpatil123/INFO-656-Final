@@ -9,7 +9,7 @@ A Feedback Logger App of InST Project.
 - Sources
 
 **About**</br>
-This app is built over InST<sup>[1]</sup>, as a feedback logger app for outputs from InST models.
+This app is built over InST<sup>[1]</sup>, as a feedback logger app for outputs from InST model.
 
 **Requirements**</br>
 The requirements for dependencies & libraries for this app are mentioned in "requirements.txt"<br>
@@ -23,7 +23,7 @@ Run the following steps in terminal:
 ```
 
 **Scripts**</br>
-- "InSt.py"<br>
+- "InST.py"<br>
 This script initialised and creates an instance of the model which is used to convert images.<br>
 This script also defines the "generate_images" function to be used for converting images.
 
