@@ -173,3 +173,6 @@ test_images
 test_images/
 .test_images/
 .test_images/temp
+outputs
+.outputs
+.outputs/
