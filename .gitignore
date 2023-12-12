@@ -176,3 +176,7 @@ test_images/
 outputs
 .outputs
 .outputs/
+InST.ipynb
+.Inst.ipynb
+main.py
+.main.py
