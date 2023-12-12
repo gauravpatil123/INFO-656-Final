@@ -1,8 +1,8 @@
 import streamlit as st
 from PIL import Image
 import os
-from InSt import model
-from InSt import generate_images as gen
+from InST import model
+from InST import generate_images as gen
 from time import gmtime, strftime
 
 # Global Variables
