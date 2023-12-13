@@ -1,5 +1,5 @@
 # INFO-656-Final
-A Feedback Logger App of InST Project.
+This repository holds the Feedback Logger Web App project created for the InST Project.
 
 **App Contents**
 - About
@@ -9,7 +9,7 @@ A Feedback Logger App of InST Project.
 - Sources
 
 **About**</br>
-This app is built over InST<sup>[1]</sup>, as a feedback logger app for outputs from InST model.
+This app is built over InST<sup>[1]</sup>, as a feedback logger web app for outputs from InST model.
 
 **Requirements**</br>
 The requirements for dependencies & libraries for this app are mentioned in "requirements.txt"<br>
@@ -50,7 +50,7 @@ Contains the feedback_log txt file with all the feedbacks along with other metad
 
 **Note**</br>
 *Other Files & Directories*: All other files and directories including python scripts & jupyter notebooks are from the InST<sup>[1]</sup> project.<br>
-The scripts & notebooks from InST project are modified and chnage to work on Mac M1 Computer.
+The scripts & notebooks from InST project are modified and changed to work on Mac M1 Computer.
 
 **Sources**</br>
 [1] Yuxin Zhang et.al. (2023). Inversion-Based Style Transfer with Diffusion Models (InST). GitHub. https://github.com/zyxElsa/InST/tree/main
