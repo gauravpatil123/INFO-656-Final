@@ -207,3 +207,11 @@ Feedback Record Time (GMT): Sat, 09 Dec 2023 22:15:19 +0000,
 Feedback: positive,
 Model Type: cpu
 }
+{
+Embedding: ./embeddings/andre-derain_embeddings.pt,
+Style Image: ./assets/style_images/andre-derain.jpg,
+Content Image: ./assets/content_images/airpalace.JPG,
+Feedback Record Time (GMT): Wed, 13 Dec 2023 00:06:14 +0000,
+Feedback: negative,
+Model Type: cpu
+}
