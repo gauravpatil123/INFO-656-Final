@@ -46,7 +46,18 @@ Contains all the generated outputs after converting the uploaded images.
 Contains all the style images on which are used by the model.
 
 - logs</br>
-Contains the feedback_log txt file with all the feedbacks along with other metadata.
+Contains the feedback_log txt file with all the feedbacks along with other metadata.<br>
+Example feedback log:
+```JSON
+  {
+  Embedding: ./embeddings/modern_embeddings.pt,
+  Style Image: ./assets/style_images/modern.jpg,
+  Content Image: ./assets/content_images/profile-pic.jpg,
+  Feedback Record Time (GMT): Sat, 09 Dec 2023 20:06:50 +0000,
+  Feedback: positive,
+  Model Type: cpu
+  }
+```
 
 **Note**</br>
 *Other Files & Directories*: All other files and directories including python scripts & jupyter notebooks are from the InST<sup>[1]</sup> project.<br>
