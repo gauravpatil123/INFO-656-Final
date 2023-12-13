@@ -48,5 +48,9 @@ Contains all the style images on which are used by the model.
 - logs</br>
 Contains the feedback_log txt file with all the feedbacks along with other metadata.
 
+**Note**</br>
+*Other Files & Directories*: All other files and directories including python scripts & jupyter notebooks are from the InST<sup>[1]</sup> project.<br>
+The scripts & notebooks from InST project are modified and chnage to work on Mac M1 Computer.
+
 **Sources**</br>
 [1] Yuxin Zhang et.al. (2023). Inversion-Based Style Transfer with Diffusion Models (InST). GitHub. https://github.com/zyxElsa/InST/tree/main
