@@ -48,7 +48,7 @@ Contains all the style images on which are used by the model.
 - logs</br>
 Contains the feedback_log txt file with all the feedbacks along with other metadata.<br>
 Example feedback log:
-```JSON
+```
   {
   Embedding: ./embeddings/modern_embeddings.pt,
   Style Image: ./assets/style_images/modern.jpg,
