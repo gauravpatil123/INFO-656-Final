@@ -25,7 +25,24 @@ Run the following steps in terminal:
 **Scripts**</br>
 - "InST.py"<br>
 This script initialised and creates an instance of the model which is used to convert images.<br>
-This script also defines the "generate_images" function to be used for converting images.
+This script also defines the "generate_images" function to be used for converting images.<br>
+```python
+def generate_images(model, embeddings:str, content_img:str, style_img:str, seed=42):
+    """
+    Returns converted Image using all the input parameters
+    """
+    model.embedding_manager.load(embeddings)
+    model = model.to(device)
+
+    out = main(prompt = '*', \
+                content_dir = content_img, \
+                style_dir = style_img, \
+                ddim_steps = 50, \
+                strength = 0.7, \
+                seed=seed, \
+                model = model)
+    return out
+```
 
 - "main_app.py"<br>
 This script creates a local stremlit app to be used to upload a contnent image and then convert it to the selected style.<br>
